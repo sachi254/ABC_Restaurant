@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './auth-components/signup/signup.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { DemoNgZorroAntdModule } from "./DemoNgZorroAntdModule";
+import { LoginComponent } from './auth-components/login/login.component';
 
 
 
@@ -22,7 +23,8 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

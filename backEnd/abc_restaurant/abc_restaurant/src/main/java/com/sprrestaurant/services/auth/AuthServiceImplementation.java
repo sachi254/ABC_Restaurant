@@ -5,6 +5,7 @@ import com.sprrestaurant.dtos.UserDto;
 import com.sprrestaurant.entities.User;
 import com.sprrestaurant.enums.UserRole;
 import com.sprrestaurant.repositories.UserRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,21 @@ public class AuthServiceImplementation implements AuthService{
         this.userRepository = userRepository;
 
     }
+
+    @PostConstruct
+    public void createAdminAccount(){
+        User adminAccount = userRepository.findByUserRole(UserRole.ADMIN);
+        if(adminAccount == null){
+            User user = new User();
+            user.setName("Admin");
+            user.setEmail("admin@outlook.com");
+            user.setPassword(new BCryptPasswordEncoder().encode("123"));
+            user.setUserRole(UserRole.ADMIN);
+            userRepository.save(user);
+        }
+    }
+
+
 
 
     @Override
