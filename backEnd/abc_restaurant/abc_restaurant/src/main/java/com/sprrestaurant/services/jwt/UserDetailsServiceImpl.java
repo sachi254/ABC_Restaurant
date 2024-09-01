@@ -1,4 +1,4 @@
-package com.sprrestaurant.services.auth.jwt;
+package com.sprrestaurant.services.jwt;
 
 import com.sprrestaurant.entities.User;
 import com.sprrestaurant.repositories.UserRepository;

@@ -8,9 +8,11 @@ import com.sprrestaurant.dtos.UserDto;
 import com.sprrestaurant.entities.User;
 import com.sprrestaurant.repositories.UserRepository;
 import com.sprrestaurant.services.auth.AuthService;
-import com.sprrestaurant.services.auth.jwt.UserDetailsServiceImpl;
+
+import com.sprrestaurant.services.jwt.UserService;
 import com.sprrestaurant.util.JwtUtil;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,26 +28,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.Optional;
 
-//import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/api/auth")
-
+@RequiredArgsConstructor
 public class AuthController {
 
     private final AuthService authService;
     private final AuthenticationManager authenticationManager;
-    private final UserDetailsServiceImpl userDetailsService;
+    private final UserService userService;
     private final JwtUtil jwtUtil;
     private final UserRepository userRepository;
 
-    public AuthController(AuthService authService, AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil, UserRepository userRepository){
-        this.authService = authService;
-        this.authenticationManager = authenticationManager;
-        this.userDetailsService = userDetailsService;
-        this.jwtUtil = jwtUtil;
-        this.userRepository = userRepository;
-    }
+
 
     @PostMapping("/signup")
     public ResponseEntity<?> signupUser(@RequestBody SignupRequest signupRequest){
@@ -70,8 +66,8 @@ public class AuthController {
             return null;
         }
 
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
-            final String jwt = jwtUtil.generateToken(userDetails.getUsername());
+        final UserDetails userDetails = userService.userDetailsService().loadUserByUsername(authenticationRequest.getEmail());
+            final String jwt = jwtUtil.generateToken(userDetails);
 
             Optional<User> optionalUser =userRepository.findFirstByEmail(userDetails.getUsername());
             AuthenticationResponse authenticationResponse = new AuthenticationResponse();
