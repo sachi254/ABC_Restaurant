@@ -16,12 +16,40 @@ export class AdminService {
 
 
   postCategory(categoryDto: any):Observable<any> {
+    console.log(this.creatAuthorizationHeader())
     return this.http.post<[]>(BASIC_URL + "api/admin/category", categoryDto,
   {
     headers:this.creatAuthorizationHeader()
   })
 
   }
+
+
+  getAllCategories():Observable<any> {
+    return this.http.get<[]>(BASIC_URL + "api/admin/categories",
+  {
+    headers:this.creatAuthorizationHeader()
+  })
+
+  }
+
+  /*
+
+  getAllCategoriesByTitle(title: String): Observable<any> {
+    return this.http.get<[]>(BASIC_URL + 'api/admin/categories/${title}', {
+        headers: this.creatAuthorizationHeader()
+    });
+}
+
+  */
+
+  getAllCategoriesByTitle(title: String): Observable<any> {
+    return this.http.get<[]>(`${BASIC_URL}api/admin/categories/${title}`, {       
+        headers: this.creatAuthorizationHeader()
+    });
+}
+
+//Here "${BASIC_URL}" able to recognizes the use of the title variable to TypeScript.
 
 
   creatAuthorizationHeader():HttpHeaders{

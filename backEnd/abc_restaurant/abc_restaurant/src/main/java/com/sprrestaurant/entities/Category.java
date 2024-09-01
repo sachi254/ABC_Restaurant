@@ -1,5 +1,6 @@
 package com.sprrestaurant.entities;
 
+import com.sprrestaurant.dtos.CategoryDto;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,35 +21,14 @@ public class Category {
     private byte[] img;
 
 
-    public Long getId() {
-        return id;
+
+    public CategoryDto getCategoryDto(){
+        CategoryDto categoryDto = new CategoryDto();
+        categoryDto.setId(id);
+        categoryDto.setName(name);
+        categoryDto.setDescription(description);
+        categoryDto.setReturnedImg(img);
+        return categoryDto;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public byte[] getImg() {
-        return img;
-    }
-
-    public void setImg(byte[] img) {
-        this.img = img;
-    }
 }

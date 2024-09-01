@@ -6,13 +6,15 @@ import { AddCategoryComponent } from './admin-components/add-category/add-catego
 import { DemoNgZorroAntdModule } from '../../DemoNgZorroAntdModule';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PostProductComponent } from './admin-components/post-product/post-product.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    PostProductComponent
   ],
   imports: [
     CommonModule,
