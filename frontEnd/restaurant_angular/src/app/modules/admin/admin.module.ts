@@ -4,6 +4,8 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './admin-components/dashboard/dashboard.component';
 import { AddCategoryComponent } from './admin-components/add-category/add-category.component';
 import { DemoNgZorroAntdModule } from '../../DemoNgZorroAntdModule';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +17,10 @@ import { DemoNgZorroAntdModule } from '../../DemoNgZorroAntdModule';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    DemoNgZorroAntdModule
+    DemoNgZorroAntdModule,
+    FormsModule,
+    ReactiveFormsModule, 
+    HttpClientModule
   ]
 })
 export class AdminModule { }
