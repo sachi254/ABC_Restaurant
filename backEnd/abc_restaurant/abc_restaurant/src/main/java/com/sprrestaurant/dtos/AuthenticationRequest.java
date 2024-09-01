@@ -1,5 +1,6 @@
 package com.sprrestaurant.dtos;
 
+
 public class AuthenticationRequest {
 
     private  String email;
