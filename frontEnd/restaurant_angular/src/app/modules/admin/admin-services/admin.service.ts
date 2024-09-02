@@ -70,6 +70,13 @@ getProductsByCategoryAndTitle(categoryId: any, title: String): Observable<any> {
 }
 
 
+deleteProduct(productId: number): Observable<any> {
+  return this.http.delete<[]>(`${BASIC_URL}api/admin/product/${productId}`, 
+  {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
+
 
   creatAuthorizationHeader():HttpHeaders{
     let authHeaders: HttpHeaders = new HttpHeaders();
