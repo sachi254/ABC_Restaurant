@@ -49,10 +49,26 @@ export class AdminService {
     return this.http.post<[]>(`${BASIC_URL}api/admin/${categoryId}/product`, productDto,
   {
     headers:this.creatAuthorizationHeader()
-  }
-)
+  })
 
   }
+
+
+
+  getProductsByCategory(categoryId: number): Observable<any> {
+    return this.http.get<[]>(`${BASIC_URL}api/admin/${categoryId}/products`, {       
+        headers: this.creatAuthorizationHeader()
+    });
+}
+
+
+
+getProductsByCategoryAndTitle(categoryId: any, title: String): Observable<any> {
+  return this.http.get<[]>(`${BASIC_URL}api/admin/${categoryId}/product/${title}`, {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
+
 
 
   creatAuthorizationHeader():HttpHeaders{
