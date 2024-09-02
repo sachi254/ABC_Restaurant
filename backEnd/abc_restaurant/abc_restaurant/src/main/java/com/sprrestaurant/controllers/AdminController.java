@@ -1,8 +1,10 @@
 package com.sprrestaurant.controllers;
 
 import com.sprrestaurant.dtos.CategoryDto;
+import com.sprrestaurant.dtos.ProductDto;
 import com.sprrestaurant.services.admin.AdminService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +45,37 @@ private final AdminService adminService;
         if(categoryDtoList == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(categoryDtoList);
     }
+
+//Start the product adding part
+
+    @PostMapping("/{categoryId}/product")
+    public ResponseEntity<?>postProduct( @PathVariable Long categoryId, @ModelAttribute ProductDto productDto) throws IOException {
+        ProductDto createdProductDto = adminService.postProduct(categoryId,productDto);
+        if(createdProductDto == null)
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something Went Wrong");
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdProductDto);
+    }
+
+
+    @GetMapping("/{categoryId}/products")
+    public ResponseEntity<List<ProductDto>> getAllProductsByCategory(@PathVariable Long categoryId){
+        List<ProductDto> productDtoList =adminService.getAllProductsByCategory(categoryId);
+
+        if(productDtoList == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(productDtoList);
+    }
+
+
+
+
+    @GetMapping("/{categoryId}/product/{title}")
+    public ResponseEntity<List<ProductDto>> getProductsByCategoryAndTitle(@PathVariable Long categoryId, @PathVariable String title){
+        List<ProductDto> productDtoList = adminService.getProductsByCategoryAndTitle(categoryId,title);
+
+        if(productDtoList == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(productDtoList);
+    }
+
 
 
 

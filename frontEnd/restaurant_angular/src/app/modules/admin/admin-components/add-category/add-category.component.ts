@@ -35,6 +35,17 @@ ngOnInit(){
 
 
 postCategory(){
+
+  if (!this.categoryForm.valid) {
+    this.message.error('Please fill in all required fields.', { nzDuration: 5000 });
+    return;
+  }
+
+  if (!this.selectedFile) {
+    this.message.error('Please select an image file.', { nzDuration: 5000 });
+    return;
+  }
+
   console.log(this.categoryForm.value);
   const formdata: FormData = new FormData();
   formdata.append("img", this.selectedFile);

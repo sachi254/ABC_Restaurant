@@ -3,11 +3,10 @@
     <button nz-button [nzSize]="size" nzType="primary" style="margin-left: 15px;"
     [disabled]="validateForm.invalid">Search</button>
 </form>
-
 <div style="background-color: #F8F8F8; min-height: 91vh;">
 
     <div style="padding-top: 10px;"></div>
-
+   
      <div style="margin-top:10px;" class="child" *ngFor="let category of categories">
         <div nz-row>
             <div nz-col nzSpan="8">
@@ -18,13 +17,13 @@
                 <h2 style="cursor: pointer; color: #108ee9;">
                     {{category.name}}</h2>
                 <hr>
-                 <h5>Description: <b>{{category.description}}</b></h5>
+                 <h5>"<b>{{category.description}}</b>"</h5>
                 <hr>
                 <div style="float: right;">
                     <button nzSize="small" nz-button nzType="primary"
-                        routerLink="/admin/{{category.id}}/view_products">View Products</button>
+                        routerLink="/admin/{{category.id}}/products">View Products</button>
                  <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary" 
-                    routerLink="/admin/{{category.id}}/product">Post Product
+                    routerLink="/admin/{{category.id}}/product">Add Products
                 </button>
                 </div>
              </div>

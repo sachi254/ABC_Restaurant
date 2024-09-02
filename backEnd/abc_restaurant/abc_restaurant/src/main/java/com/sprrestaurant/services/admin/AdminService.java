@@ -1,6 +1,7 @@
 package com.sprrestaurant.services.admin;
 
 import com.sprrestaurant.dtos.CategoryDto;
+import com.sprrestaurant.dtos.ProductDto;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -15,4 +16,11 @@ public interface AdminService {
     List<CategoryDto> getAllCategories();
 
     List<CategoryDto> getAllCategoriesByTitle(String title);
+
+    ProductDto postProduct(Long categoryId, ProductDto productDto) throws IOException;
+
+    List<ProductDto> getAllProductsByCategory(Long categoryId);
+
+
+    List<ProductDto> getProductsByCategoryAndTitle(Long categoryId, String title);
 }
