@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'restaurant_angular';
+  
 
 isAdminLoggedIn: boolean = StorageService.isAdminLoggedIn();
 isCustomerLoggedIn: boolean = StorageService.isCustomerLoggedIn();
