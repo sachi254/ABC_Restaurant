@@ -2,6 +2,7 @@ package com.sprrestaurant.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sprrestaurant.dtos.ProductDto;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
@@ -33,5 +34,21 @@ public class Product {
     @JsonIgnore
     private Category category;
 
+    public ProductDto getProductDto(){
+
+        ProductDto productDto = new ProductDto();
+        productDto.setId(id);
+        productDto.setName(name);
+        productDto.setPrice(price);
+        productDto.setDescription(description);
+        productDto.setReturnedImg(img);
+        productDto.setCategoryId(category.getId());
+        productDto.setCategoryName(category.getName());
+        return productDto;
+    }
 
 }
+
+
+
+
