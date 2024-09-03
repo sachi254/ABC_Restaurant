@@ -30,7 +30,6 @@ export class AdminService {
   {
     headers:this.creatAuthorizationHeader()
   })
-
   }
 
 
