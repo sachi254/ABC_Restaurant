@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostProductComponent } from './admin-components/post-product/post-product.component';
 import { ViewProductsComponent } from './admin-components/view-products/view-products.component';
 import { UpdateProductComponent } from './admin-components/update-product/update-product.component';
+import { GetReservationsComponent } from './admin-components/get-reservations/get-reservations.component';
 
 
 
@@ -18,7 +19,8 @@ import { UpdateProductComponent } from './admin-components/update-product/update
     AddCategoryComponent,
     PostProductComponent,
     ViewProductsComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    GetReservationsComponent
   ],
   imports: [
     CommonModule,

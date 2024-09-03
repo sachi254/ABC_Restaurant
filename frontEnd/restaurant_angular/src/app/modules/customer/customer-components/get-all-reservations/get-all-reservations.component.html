@@ -18,7 +18,7 @@
         <td>
                     <strong
 
-                        [ngStyle]="{'color': reservation.reservationStatus === 'APPROVED'? 'green': reservation.reservationStatus === 'DISAPPROVED' ? 'blue': 'red'}">
+                        [ngStyle]="{'color': reservation.reservationStatus === 'Approved'? 'green': reservation.reservationStatus === 'Cancelled' ? 'red': 'blue'}">
                         {{ reservation.reservationStatus }}
                     </strong>
                 </td>
