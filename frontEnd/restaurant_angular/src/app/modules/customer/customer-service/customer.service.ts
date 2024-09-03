@@ -36,6 +36,15 @@ export class CustomerService {
   }
 
 
+// view product
+
+getProductsByCategory(categoryId: number): Observable<any> {
+    return this.http.get<[]>(`${BASIC_URL}api/customer/${categoryId}/products`, {       
+        headers: this.creatAuthorizationHeader()
+    });
+}
+
+
 
 
 

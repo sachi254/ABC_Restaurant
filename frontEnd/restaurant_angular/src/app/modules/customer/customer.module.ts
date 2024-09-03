@@ -6,11 +6,13 @@ import { DashboardComponent } from './customer-components/dashboard/dashboard.co
 import { DemoNgZorroAntdModule } from '../../DemoNgZorroAntdModule';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewProductsByCategoryComponent } from './customer-components/view-products-by-category/view-products-by-category.component';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    ViewProductsByCategoryComponent
   ],
   imports: [
     CommonModule,
