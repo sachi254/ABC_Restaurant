@@ -56,7 +56,7 @@ getProductsByCategoryAndTitle(categoryId: any, title: String): Observable<any> {
 
 
 //Reservation functions start
-
+//make a reservation by user
 postReservation(reservationDto: any): Observable<any> {
   reservationDto.customerId = StorageService.getUserId();
   return this.http.post<[]>(BASIC_URL + `api/customer/reservation`,reservationDto, {       
@@ -64,7 +64,13 @@ postReservation(reservationDto: any): Observable<any> {
   });
 }
 
+// all reservations in customer side
 
+getReservationsByUser(): Observable<any> {
+  return this.http.get<[]>(`${BASIC_URL}api/customer/reservations/${StorageService.getUserId()}`, {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
 
 
 
