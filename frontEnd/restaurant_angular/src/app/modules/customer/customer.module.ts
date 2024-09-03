@@ -7,12 +7,14 @@ import { DemoNgZorroAntdModule } from '../../DemoNgZorroAntdModule';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewProductsByCategoryComponent } from './customer-components/view-products-by-category/view-products-by-category.component';
+import { PostReservationComponent } from './customer-components/post-reservation/post-reservation.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    ViewProductsByCategoryComponent
+    ViewProductsByCategoryComponent,
+    PostReservationComponent
   ],
   imports: [
     CommonModule,

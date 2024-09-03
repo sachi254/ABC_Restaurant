@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PostProductComponent {
 
-  categoryId!: number; // Use definite assignment assertion or initialize in ngOnInit
+  categoryId!: number; 
   validateForm!: FormGroup;
   selectedFile: File | null ; 
   imagePreview: string | ArrayBuffer | null ; 
@@ -28,7 +28,7 @@ private activatedroute: ActivatedRoute) { }
 
 ngOnInit(): void {
 
-this.categoryId = this.activatedroute.snapshot.params['categoryId']; // Convert to number using '+'
+this.categoryId = this.activatedroute.snapshot.params['categoryId']; 
 
   
 this.validateForm = this.fb.group({

@@ -14,6 +14,13 @@ export class StorageService {
   constructor() {}
 
 
+static getUserId(): string{
+  const user = this.getUser();
+  if(user == null) return '';
+  return user.id;
+}
+
+
   static saveToken(token:string):void{
     window.localStorage.removeItem(TOKEN);
     window.localStorage.setItem(TOKEN, token);
