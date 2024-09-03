@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AdminService } from '../../admin-services/admin.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzButtonSize } from 'ng-zorro-antd/button';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal'; // Addedto get message
 
 @Component({
   selector: 'app-view-products',
@@ -22,6 +24,8 @@ export class ViewProductsComponent {
 
   constructor (private adminService: AdminService, 
     private activatedroute: ActivatedRoute,
+    private message: NzMessageService,
+    private modal: NzModalService, // Inject NzModalService
     private fb: FormBuilder) {}
 
 
@@ -60,6 +64,35 @@ submitForm() {
     });
   });
  }
+
+
+
+deleteProduct(productId: any) {
+  this.modal.confirm({
+    nzTitle: 'Are you sure you want to delete this product?',
+    nzContent: 'This action cannot be undone.',
+    nzOkText: 'Yes',
+    nzOkType: 'primary',
+    nzOnOk: () => this.confirmDeleteProduct(productId),
+    nzCancelText: 'No',
+    nzOnCancel: () => console.log('Deletion canceled')
+  });
+}
+
+confirmDeleteProduct(productId: any) {
+  this.adminService.deleteProduct(productId).subscribe(
+    () => {
+      this.getProductsByCategory();
+      this.message.success('Product deleted successfully.', { nzDuration: 5000 });
+    },
+    () => {
+      this.message.error('Something went wrong.', { nzDuration: 5000 });
+    }
+  );
+}
+
+
+
 
 
 }

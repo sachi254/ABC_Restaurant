@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './auth-components/signup/signup.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { DemoNgZorroAntdModule } from "./DemoNgZorroAntdModule";
+import { NzModalModule } from 'ng-zorro-antd/modal';     //added to get message
 import { LoginComponent } from './auth-components/login/login.component';
 
 
@@ -33,7 +34,8 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    DemoNgZorroAntdModule
+    DemoNgZorroAntdModule,
+    NzModalModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
