@@ -18,30 +18,30 @@ export class ViewProductsByCategoryComponent {
 
   categoryId!: number; 
   Products: any = [];
-//  isSpinning: boolean;
-//  validateForm!: FormGroup;
- // size: NzButtonSize = 'large';
+  isSpinning: boolean = false;
+  validateForm!: FormGroup;
+  size: NzButtonSize = 'large';
   
 
 
   constructor (private customerService: CustomerService, 
     private activatedroute: ActivatedRoute,
-  //  private message: NzMessageService,
-  //  private modal: NzModalService, // Inject NzModalService
-  //  private fb: FormBuilder
+    private message: NzMessageService,
+    private modal: NzModalService, // Inject NzModalService
+    private fb: FormBuilder
   ) {}
 
 
   ngOnInit(): void {
   this.categoryId = this.activatedroute.snapshot.params['categoryId'];
- // this.validateForm = this.fb.group({
- //   title: [null, [Validators.required]],
- //   });
+   this.validateForm = this.fb.group({
+   title: [null, [Validators.required]],
+   });
   this.getProductsByCategory();
 }
 
 
-/*
+
 submitForm() {
   this.isSpinning = true;
   this. Products = [];
@@ -55,7 +55,7 @@ submitForm() {
   });
   }
 
-  */
+  
   
 
   

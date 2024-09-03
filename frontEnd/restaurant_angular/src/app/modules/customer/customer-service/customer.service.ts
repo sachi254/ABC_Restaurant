@@ -45,6 +45,12 @@ getProductsByCategory(categoryId: number): Observable<any> {
 }
 
 
+// search products by category id and the product name
+getProductsByCategoryAndTitle(categoryId: any, title: String): Observable<any> {
+  return this.http.get<[]>(`${BASIC_URL}api/customer/${categoryId}/product/${title}`, {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
 
 
 
