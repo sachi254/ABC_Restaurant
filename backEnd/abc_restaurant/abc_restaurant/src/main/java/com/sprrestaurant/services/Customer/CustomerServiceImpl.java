@@ -56,7 +56,7 @@ public class CustomerServiceImpl implements CustomerService{
         if(optionalUser.isPresent()){
             Reservation reservation = new Reservation();
             reservation.setTableType(reservationDto.getTableType());
-            reservation.setDataTime(reservationDto.getDataTime());
+            reservation.setDateTime(reservationDto.getDateTime());
             reservation.setDescription(reservationDto.getDescription());
             reservation.setUser(optionalUser.get());
             reservation.setReservationStatus(ReservationStatus.Pending);
@@ -66,5 +66,10 @@ public class CustomerServiceImpl implements CustomerService{
             return postedReservationDto;
         }
         return null;
+    }
+
+    @Override
+    public List<ReservationDto> getReservationsByUser(Long customerId) {
+        return reservationRepository.findAllByUserId(customerId).stream().map(Reservation::getReservationDto).collect(Collectors.toList());
     }
 }

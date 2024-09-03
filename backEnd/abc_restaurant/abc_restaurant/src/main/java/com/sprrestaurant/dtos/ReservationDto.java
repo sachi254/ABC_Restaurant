@@ -13,7 +13,7 @@ public class ReservationDto {
 
     private  String description;
 
-    private  String dataTime;
+    private  String dateTime;
 
     private Long customerId;
 

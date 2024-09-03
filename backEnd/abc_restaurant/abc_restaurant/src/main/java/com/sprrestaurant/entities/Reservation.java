@@ -1,6 +1,7 @@
 package com.sprrestaurant.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sprrestaurant.dtos.ReservationDto;
 import com.sprrestaurant.enums.ReservationStatus;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class Reservation {
 
     private  String description;
 
-    private  String dataTime;
+    private  String dateTime;
 
     private ReservationStatus reservationStatus;
 
@@ -30,5 +31,14 @@ public class Reservation {
     private User user;
 
 
-
+    public ReservationDto getReservationDto() {
+        ReservationDto reservationDto = new ReservationDto();
+        reservationDto.setId(id);
+        reservationDto.setTableType(tableType);
+        reservationDto.setReservationStatus(reservationStatus);
+        reservationDto.setDescription(description);
+        reservationDto.setDateTime(dateTime);
+        reservationDto.setCustomerId(user.getId());
+        return reservationDto;
+    }
 }

@@ -66,7 +66,7 @@ public class CustomerController {
 
 
     // Reservations Functions start
-
+// make a reservation by user
     @PostMapping("/reservation")
     public ResponseEntity<?> postReservation(@RequestBody ReservationDto reservationDto) throws IOException {
          ReservationDto postedReservationDto = customerService.postReservation(reservationDto);
@@ -74,6 +74,19 @@ public class CustomerController {
         if(postedReservationDto == null) return new ResponseEntity<>("Something went Wrong", HttpStatus.BAD_REQUEST);
         return ResponseEntity.status(HttpStatus.CREATED).body(postedReservationDto);
     }
+
+
+
+    //Get all reservations to the customer
+    @GetMapping("/reservations/{customerId}")
+    public ResponseEntity<List<ReservationDto>> getReservationsByUser(@PathVariable Long customerId){
+        List<ReservationDto> reservationDtoList =customerService.getReservationsByUser(customerId);
+
+        if(reservationDtoList == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(reservationDtoList);
+    }
+
+
 
 
 }
