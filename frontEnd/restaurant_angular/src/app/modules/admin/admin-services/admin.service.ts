@@ -78,6 +78,32 @@ deleteProduct(productId: number): Observable<any> {
 }
 
 
+getProductsById(productId: number): Observable<any> {
+  return this.http.get<[]>(`${BASIC_URL}api/admin/product/${productId}`, {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
+
+
+
+updateProduct(productId: number, productDto: any): Observable<any> {
+  const formData = new FormData();
+  formData.append('name', productDto.name);
+  formData.append('price', productDto.price);
+  formData.append('description', productDto.description);
+  if (productDto.img) {
+      formData.append('img', productDto.img);
+  }
+
+  return this.http.put(`${BASIC_URL}api/admin/product/${productId}`, formData, {
+      headers: this.creatAuthorizationHeader()
+  });
+}
+
+
+
+
+
   creatAuthorizationHeader():HttpHeaders{
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
