@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewProductsByCategoryComponent } from './customer-components/view-products-by-category/view-products-by-category.component';
 import { PostReservationComponent } from './customer-components/post-reservation/post-reservation.component';
+import { GetAllReservationsComponent } from './customer-components/get-all-reservations/get-all-reservations.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     ViewProductsByCategoryComponent,
-    PostReservationComponent
+    PostReservationComponent,
+    GetAllReservationsComponent
   ],
   imports: [
     CommonModule,
