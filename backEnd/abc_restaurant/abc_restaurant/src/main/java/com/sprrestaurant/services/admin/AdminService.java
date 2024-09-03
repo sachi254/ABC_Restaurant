@@ -2,6 +2,7 @@ package com.sprrestaurant.services.admin;
 
 import com.sprrestaurant.dtos.CategoryDto;
 import com.sprrestaurant.dtos.ProductDto;
+import com.sprrestaurant.dtos.ReservationDto;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -31,4 +32,7 @@ public interface AdminService {
     ProductDto updateProduct(Long productId, ProductDto productDto)throws IOException;
 
 
+    List<ReservationDto> getReservations();
+
+    ReservationDto changeReservationStatus(Long reservationId, String status);
 }

@@ -2,6 +2,7 @@ package com.sprrestaurant.controllers;
 
 import com.sprrestaurant.dtos.CategoryDto;
 import com.sprrestaurant.dtos.ProductDto;
+import com.sprrestaurant.dtos.ReservationDto;
 import com.sprrestaurant.services.admin.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -102,6 +103,31 @@ private final AdminService adminService;
         }
         return ResponseEntity.ok(updatedProductDto);
     }
+
+
+
+
+    //Get all reservations
+    @GetMapping("/reservations")
+    public ResponseEntity<List<ReservationDto>> getReservations(){
+        List<ReservationDto> reservationDtoList =adminService.getReservations();
+
+        if(reservationDtoList == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(reservationDtoList);
+    }
+
+
+    //Get all reservations to the customer
+    @GetMapping("/reservation/{reservationId}/{status}")
+    public ResponseEntity<ReservationDto> changeReservationStatus(@PathVariable Long reservationId, @PathVariable String status){
+        ReservationDto UpdatedReservationDto =adminService.changeReservationStatus(reservationId, status);
+
+        if(UpdatedReservationDto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(UpdatedReservationDto);
+    }
+
+
+
 
 
 

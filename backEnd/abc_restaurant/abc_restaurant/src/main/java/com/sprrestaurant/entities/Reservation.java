@@ -39,6 +39,7 @@ public class Reservation {
         reservationDto.setDescription(description);
         reservationDto.setDateTime(dateTime);
         reservationDto.setCustomerId(user.getId());
+        reservationDto.setCustomerName(user.getName());
         return reservationDto;
     }
 }

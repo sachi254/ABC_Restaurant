@@ -19,6 +19,7 @@ public class ReservationDto {
 
     private ReservationStatus reservationStatus;
 
+    private String customerName;
 
 
 
