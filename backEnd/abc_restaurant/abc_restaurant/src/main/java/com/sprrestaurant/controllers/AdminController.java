@@ -77,6 +77,31 @@ private final AdminService adminService;
     }
 
 
+    @DeleteMapping("/product/{productId}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long productId){
+        adminService.deleteProduct(productId);
+        return ResponseEntity.noContent().build();
+
+    }
+
+
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<ProductDto> getProductById(@PathVariable Long productId){
+        ProductDto productDto = adminService.getProductById(productId);
+
+        if(productDto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(productDto);
+    }
+
+
+    @PutMapping("/product/{productId}")
+    public ResponseEntity<?> updateProduct(@PathVariable Long productId, @ModelAttribute ProductDto productDto) throws IOException {
+        ProductDto updatedProductDto = adminService.updateProduct(productId, productDto);
+        if (updatedProductDto == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Update failed. Please check the data and try again.");
+        }
+        return ResponseEntity.ok(updatedProductDto);
+    }
 
 
 

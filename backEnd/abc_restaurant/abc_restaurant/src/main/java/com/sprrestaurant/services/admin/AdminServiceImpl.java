@@ -80,5 +80,40 @@ public class AdminServiceImpl implements AdminService {
         return productRepository.findAllByCategoryIdAndNameContaining(categoryId,title).stream().map(Product::getProductDto).collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteProduct(Long productId) {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        if(optionalProduct.isPresent()){
+            productRepository.delete(optionalProduct.get());
+        }
+
+    }
+
+    @Override
+    public ProductDto getProductById(Long productId) {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        return optionalProduct.map(Product::getProductDto).orElse(null);
+    }
+
+    @Override
+    public ProductDto updateProduct(Long productId, ProductDto productDto) throws IOException {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        if (optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            BeanUtils.copyProperties(productDto, product, "id", "category");
+            if (productDto.getImg() != null) {
+                product.setImg(productDto.getImg().getBytes());
+            }
+            Product updatedProduct = productRepository.save(product);
+            ProductDto updatedProductDto = new ProductDto();
+            BeanUtils.copyProperties(updatedProduct, updatedProductDto);
+            return updatedProductDto;
+        } else {
+            return null;
+        }
+    }
 
 }
+
+
+
