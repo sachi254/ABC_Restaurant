@@ -54,6 +54,22 @@ getProductsByCategoryAndTitle(categoryId: any, title: String): Observable<any> {
 
 
 
+
+//Reservation functions start
+
+postReservation(reservationDto: any): Observable<any> {
+  reservationDto.customerId = StorageService.getUserId();
+  return this.http.post<[]>(BASIC_URL + `api/customer/reservation`,reservationDto, {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
+
+
+
+
+
+
+
   creatAuthorizationHeader():HttpHeaders{
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
