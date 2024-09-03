@@ -3,13 +3,13 @@ package com.sprrestaurant.controllers;
 
 import com.sprrestaurant.dtos.CategoryDto;
 import com.sprrestaurant.dtos.ProductDto;
+import com.sprrestaurant.dtos.ReservationDto;
 import com.sprrestaurant.services.Customer.CustomerService;
+import io.jsonwebtoken.io.IOException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class CustomerController {
         return ResponseEntity.ok(categoryDtoList);
     }
 
-
+    //Search categories by name
     @GetMapping("/categories/{title}")
     public ResponseEntity<List<CategoryDto>> getAllCategoriesByName(@PathVariable String title){
         List<CategoryDto> categoryDtoList =customerService.getAllCategoriesByName(title);
@@ -43,6 +43,7 @@ public class CustomerController {
 
     //Operation start
 
+    //Get Categories to the dashboard
     @GetMapping("/{categoryId}/products")
     public ResponseEntity<List<ProductDto>> getProductsByCategory(@PathVariable Long categoryId){
         List<ProductDto> productDtoList =customerService.getProductsByCategory(categoryId);
@@ -53,7 +54,7 @@ public class CustomerController {
 
 
 
-
+// search products By Name (hear we get the category id and the name of the product)
     @GetMapping("/{categoryId}/product/{title}")
     public ResponseEntity<List<ProductDto>> getProductsByCategoryAndTitle(@PathVariable Long categoryId, @PathVariable String title){
         List<ProductDto> productDtoList = customerService.getProductsByCategoryAndTitle(categoryId,title);
@@ -62,6 +63,17 @@ public class CustomerController {
         return ResponseEntity.ok(productDtoList);
     }
 
+
+
+    // Reservations Functions start
+
+    @PostMapping("/reservation")
+    public ResponseEntity<?> postReservation(@RequestBody ReservationDto reservationDto) throws IOException {
+         ReservationDto postedReservationDto = customerService.postReservation(reservationDto);
+
+        if(postedReservationDto == null) return new ResponseEntity<>("Something went Wrong", HttpStatus.BAD_REQUEST);
+        return ResponseEntity.status(HttpStatus.CREATED).body(postedReservationDto);
+    }
 
 
 }
