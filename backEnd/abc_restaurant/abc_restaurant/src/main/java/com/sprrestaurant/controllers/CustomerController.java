@@ -2,6 +2,7 @@ package com.sprrestaurant.controllers;
 
 
 import com.sprrestaurant.dtos.CategoryDto;
+import com.sprrestaurant.dtos.ProductDto;
 import com.sprrestaurant.services.Customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -38,5 +39,20 @@ public class CustomerController {
         if(categoryDtoList == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(categoryDtoList);
     }
+
+
+    //Operation start
+
+    @GetMapping("/{categoryId}/products")
+    public ResponseEntity<List<ProductDto>> getProductsByCategory(@PathVariable Long categoryId){
+        List<ProductDto> productDtoList =customerService.getProductsByCategory(categoryId);
+
+        if(productDtoList == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(productDtoList);
+    }
+
+
+
+
 
 }

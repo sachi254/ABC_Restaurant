@@ -2,7 +2,9 @@ package com.sprrestaurant.services.Customer;
 
 
 import com.sprrestaurant.dtos.CategoryDto;
+import com.sprrestaurant.dtos.ProductDto;
 import com.sprrestaurant.entities.Category;
+import com.sprrestaurant.entities.Product;
 import com.sprrestaurant.repositories.CategoryRepository;
 import com.sprrestaurant.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +30,10 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public List<CategoryDto> getAllCategoriesByName(String title) {
         return categoryRepository.findAllByNameContaining(title).stream().map(Category::getCategoryDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductDto> getProductsByCategory(Long categoryId) {
+        return productRepository.findAllByCategoryId(categoryId).stream().map(Product::getProductDto).collect(Collectors.toList());
     }
 }
