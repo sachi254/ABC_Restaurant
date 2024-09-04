@@ -5,6 +5,7 @@ import { AddCategoryComponent } from './admin-components/add-category/add-catego
 import { PostProductComponent } from './admin-components/post-product/post-product.component';
 import { ViewProductsComponent } from './admin-components/view-products/view-products.component';
 import { UpdateProductComponent } from './admin-components/update-product/update-product.component';
+import { GetReservationsComponent } from './admin-components/get-reservations/get-reservations.component';
 
 const routes: Routes = [
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:":categoryId/product",component:PostProductComponent},
   {path:":categoryId/products",component:ViewProductsComponent},
   {path:"product/:productId",component:UpdateProductComponent},
+  {path:"reservations",component:GetReservationsComponent},
 
 ];
 

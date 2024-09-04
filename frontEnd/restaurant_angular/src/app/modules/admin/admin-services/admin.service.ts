@@ -101,6 +101,22 @@ updateProduct(productId: number, productDto: any): Observable<any> {
 
 
 
+// all reservations 
+
+getReservations(): Observable<any> {
+  return this.http.get<[]>(`${BASIC_URL}api/admin/reservations`, {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
+
+
+changeReservationStatus(reservationId: number, status: string): Observable<any> {
+  return this.http.get<[]>(`${BASIC_URL}api/admin/reservation/${reservationId}/${status}`, {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
+
+
 
 
   creatAuthorizationHeader():HttpHeaders{
