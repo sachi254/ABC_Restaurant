@@ -42,6 +42,8 @@ if(StorageService.isAdminLoggedIn()){
   this.router.navigateByUrl("admin/dashboard");
 }else if(StorageService.isCustomerLoggedIn()){
   this.router.navigateByUrl("customer/dashboard");
+}else if(StorageService.isStaffLoggedIn()){
+  this.router.navigateByUrl("staff/dashboard");
 }
 
 }else {

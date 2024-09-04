@@ -66,6 +66,16 @@ static isCustomerLoggedIn(): boolean{
     }
 
 
+    static isStaffLoggedIn(): boolean{
+      if (this.getToken()  == null) {
+        return false;
+         }
+         const role: string= this.getUserRole();
+         return role =="STAFF";
+      }
+
+
+
 
 static signout(){
   window.localStorage.removeItem(USER)
