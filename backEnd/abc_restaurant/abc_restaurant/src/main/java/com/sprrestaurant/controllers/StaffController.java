@@ -3,6 +3,7 @@ package com.sprrestaurant.controllers;
 
 import com.sprrestaurant.dtos.CategoryDto;
 import com.sprrestaurant.dtos.ProductDto;
+import com.sprrestaurant.dtos.ReservationDto;
 import com.sprrestaurant.services.staff.StaffService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -61,6 +62,35 @@ public class StaffController {
         if(productDtoList == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(productDtoList);
     }
+
+
+
+
+
+
+
+
+    //Get all reservations
+    @GetMapping("/reservations")
+    public ResponseEntity<List<ReservationDto>> getReservations(){
+        List<ReservationDto> reservationDtoList =staffService.getReservations();
+
+        if(reservationDtoList == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(reservationDtoList);
+    }
+
+
+    //update the reservation status in staff side
+
+    @GetMapping("/reservation/{reservationId}/{status}")
+    public ResponseEntity<ReservationDto> changeReservationStatus(@PathVariable Long reservationId, @PathVariable String status){
+        ReservationDto UpdatedReservationDto =staffService.changeReservationStatus(reservationId, status);
+
+        if(UpdatedReservationDto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(UpdatedReservationDto);
+    }
+
+
 
 
 }

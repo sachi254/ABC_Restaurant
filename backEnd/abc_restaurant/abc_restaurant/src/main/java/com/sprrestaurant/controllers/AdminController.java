@@ -116,8 +116,8 @@ private final AdminService adminService;
         return ResponseEntity.ok(reservationDtoList);
     }
 
+    //update the reservation status
 
-    //Get all reservations to the customer
     @GetMapping("/reservation/{reservationId}/{status}")
     public ResponseEntity<ReservationDto> changeReservationStatus(@PathVariable Long reservationId, @PathVariable String status){
         ReservationDto UpdatedReservationDto =adminService.changeReservationStatus(reservationId, status);
