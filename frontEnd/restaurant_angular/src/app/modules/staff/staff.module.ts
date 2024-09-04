@@ -6,12 +6,14 @@ import { DashboardComponent } from './staff-components/dashboard/dashboard.compo
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DemoNgZorroAntdModule } from '../../DemoNgZorroAntdModule';
+import { StaffGetReservationsComponent } from './staff-components/staff-get-reservations/staff-get-reservations.component';
 
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    StaffGetReservationsComponent
   ],
   imports: [
     CommonModule,

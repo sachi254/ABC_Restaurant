@@ -101,7 +101,8 @@ updateProduct(productId: number, productDto: any): Observable<any> {
 
 
 
-// all reservations 
+// get 
+//all reservations 
 
 getReservations(): Observable<any> {
   return this.http.get<[]>(`${BASIC_URL}api/admin/reservations`, {       

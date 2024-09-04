@@ -1,27 +1,24 @@
-# RestaurantAngular
+## Important
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
+If you get this project to your hand you need to " Install npm" to inside the restaurant_angular folder. Then give the command 'ng serve'.  you need to start the both frontEnd and BackEnd parts to run this project.
+
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload.
 
-## Code scaffolding
+## Database
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You need to create a MySQL data base with this "abcres_db" name.
 
-## Build
+## Users
+_Admin_
+username: admin@outlook.com
+password: 123
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+_Staff_
+username: stf
+password: 123
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
