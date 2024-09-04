@@ -32,6 +32,18 @@ public class AuthServiceImplementation implements AuthService{
             user.setUserRole(UserRole.ADMIN);
             userRepository.save(user);
         }
+
+        User staffAccount = userRepository.findByUserRole(UserRole.STAFF);
+        if(staffAccount == null){
+            User user = new User();
+            user.setName("Staff");
+            user.setEmail("stf");
+            user.setPassword(new BCryptPasswordEncoder().encode("123"));
+            user.setUserRole(UserRole.STAFF);
+            userRepository.save(user);
+        }
+
+
     }
 
 

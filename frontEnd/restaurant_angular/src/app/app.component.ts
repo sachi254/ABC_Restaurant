@@ -13,6 +13,7 @@ export class AppComponent {
 
 isAdminLoggedIn: boolean = StorageService.isAdminLoggedIn();
 isCustomerLoggedIn: boolean = StorageService.isCustomerLoggedIn();
+isStaffLoggedIn: boolean = StorageService.isStaffLoggedIn();
 
   constructor(private router: Router){}
 
@@ -21,7 +22,7 @@ ngOnInit(){
       if(event.constructor.name === "NavigationEnd"){
         this.isAdminLoggedIn = StorageService.isAdminLoggedIn();
         this.isCustomerLoggedIn = StorageService.isCustomerLoggedIn();
-
+        this.isStaffLoggedIn = StorageService.isStaffLoggedIn();
       }
   })
 }
