@@ -39,6 +39,7 @@ public class webSecurityConfiguration {
                 .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/**")
                     .permitAll()
                         .requestMatchers("/api/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers("/api/staff/**").hasAuthority(UserRole.STAFF.name())
                     .anyRequest().authenticated())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authenticationProvider(authenticationProvider()).addFilterBefore(
