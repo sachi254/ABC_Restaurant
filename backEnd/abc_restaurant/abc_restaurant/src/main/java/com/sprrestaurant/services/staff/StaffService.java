@@ -2,6 +2,7 @@ package com.sprrestaurant.services.staff;
 
 import com.sprrestaurant.dtos.CategoryDto;
 import com.sprrestaurant.dtos.ProductDto;
+import com.sprrestaurant.dtos.ReservationDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,4 +20,7 @@ public interface StaffService {
     List<ProductDto> getProductsByCategoryAndTitle(Long categoryId, String title);
 
 
+    List<ReservationDto> getReservations();
+
+    ReservationDto changeReservationStatus(Long reservationId, String status);
 }

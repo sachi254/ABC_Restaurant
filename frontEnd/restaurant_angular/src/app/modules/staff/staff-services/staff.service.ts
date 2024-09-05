@@ -49,6 +49,28 @@ return this.http.get<[]>(`${BASIC_URL}api/staff/${categoryId}/product/${title}`,
 });
 }
 
+
+
+
+//get All reservations
+
+getReservations(): Observable<any> {
+  return this.http.get<[]>(`${BASIC_URL}api/staff/reservations`, {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
+
+
+//Change the Reservation status
+
+changeReservationStatus(reservationId: number, status: string): Observable<any> {
+  return this.http.get<[]>(`${BASIC_URL}api/staff/reservation/${reservationId}/${status}`, {       
+      headers: this.creatAuthorizationHeader()
+  });
+}
+
+
+
   creatAuthorizationHeader():HttpHeaders{
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(

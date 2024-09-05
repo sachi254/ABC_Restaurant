@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { StaffService } from '../../staff-services/staff.service';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { CustomerService } from '../../../customer/customer-service/customer.service';
-import { AdminService } from '../../admin-services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-get-reservations',
-  templateUrl: './get-reservations.component.html',
-  styleUrl: './get-reservations.component.scss'
+  selector: 'app-staff-get-reservations',
+  templateUrl: './staff-get-reservations.component.html',
+  styleUrl: './staff-get-reservations.component.scss'
 })
-export class GetReservationsComponent {
+export class StaffGetReservationsComponent {
+
+
 
 
   reservations: any;
@@ -19,7 +19,7 @@ export class GetReservationsComponent {
   size: NzButtonSize = 'large';
 
   constructor(
-    private adminService: AdminService,
+    private staffService: StaffService,
     private message: NzMessageService,
     private router: Router) { }
     
@@ -35,28 +35,30 @@ export class GetReservationsComponent {
 
       
       getReservationsByUser(){
-        this.adminService.getReservations().subscribe((res) => {
+        this.staffService.getReservations().subscribe((res) => {
           console.log(res);
           this.reservations = res;
         })
       }
-    
+   
       changeReservationStatus(reservationId: number, status: string){
         console.log(reservationId);
         console.log(status);
-        this.adminService.changeReservationStatus(reservationId, status).subscribe((res) => {
+        this.staffService.changeReservationStatus(reservationId, status).subscribe((res) => {
           console.log(res);
           this.reservations = res;
 
           if (res.id != null) {
             this.message.success('Request Submitted Successfully.',{nzDuration: 5000 });
-            this.router.navigateByUrl('/admin/reservations');
+            this.router.navigateByUrl('/staff/reservations');
             } else {
             this.message.error('Something went wrong', {nzDuration: 5000 } );
           }
         })
       
       }
+        
+
 
 
 }
