@@ -33,30 +33,39 @@ export class SignupComponent {
 
   ngOnInit(){
     this.validateForm = this.fb.group({
-      email:["",Validators.required],
+      email: ["", [Validators.required, Validators.email]], 
       password:["",Validators.required],
+       //  password: ["", [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/)]], // Password pattern validation
       checkPassword:["",[Validators.required,this.confirmationValidator]],
       name:["",Validators.required],
-    })
+    });
   }
 
 
-  register(){
-    console.log(this.validateForm.value);
-    this.service.signup(this.validateForm.value).subscribe((res) =>{
-    console.log(res);
+  register() {
+    if (this.validateForm.valid) { // Only submit if the form is valid
+      this.isSpinning = true;
+      console.log(this.validateForm.value);
 
-      if(res.id != null){
-        this.notification.success("SUCESS", "You have registered successfully", { nzDuration: 5000}); // 5000 mili seconds
-      } else{
-        this.notification.error("ERRoR", "Somthing went wrong, please try again", { nzDuration: 5000});
+      this.service.signup(this.validateForm.value).subscribe((res) => {
+        console.log(res);
 
-      }
+        if (res.id != null) {
+          this.notification.success("SUCCESS", "You have registered successfully", { nzDuration: 5000 });
+        } else {
+          this.notification.error("ERROR", "Something went wrong, please try again", { nzDuration: 5000 });
+        }
 
-  })
-
+        this.isSpinning = false; // Stop spinner
+      }, error => {
+        this.isSpinning = false;
+        this.notification.error("ERROR", "Registration failed, please check the details and try again", { nzDuration: 5000 });
+        console.log('Error:', error);
+      });
+    } else {
+      this.notification.error("ERROR", "Registration failed, please check the details and try again", { nzDuration: 5000 });
+      this.validateForm.markAllAsTouched(); // Mark all controls as touched to show validation errors
+    }
   }
-
-
 
 }

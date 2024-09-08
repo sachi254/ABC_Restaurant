@@ -49,7 +49,7 @@ export class GetReservationsComponent {
           this.reservations = res;
 
           if (res.id != null) {
-            this.message.success('Request Submitted Successfully.',{nzDuration: 5000 });
+            this.message.success('Status Updated Successfully.',{nzDuration: 5000 });
             this.router.navigateByUrl('/admin/reservations');
             } else {
             this.message.error('Something went wrong', {nzDuration: 5000 } );
