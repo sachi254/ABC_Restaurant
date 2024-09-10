@@ -34,8 +34,8 @@ export class SignupComponent {
   ngOnInit(){
     this.validateForm = this.fb.group({
       email: ["", [Validators.required, Validators.email]], 
-      password:["",Validators.required],
-       //  password: ["", [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/)]], // Password pattern validation
+     
+        password: ["", [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/)]], // Password pattern validation
       checkPassword:["",[Validators.required,this.confirmationValidator]],
       name:["",Validators.required],
     });
