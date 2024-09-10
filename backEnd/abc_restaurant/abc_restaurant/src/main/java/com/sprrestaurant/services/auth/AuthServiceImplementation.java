@@ -27,8 +27,8 @@ public class AuthServiceImplementation implements AuthService{
         if(adminAccount == null){
             User user = new User();
             user.setName("Admin");
-            user.setEmail("admin@outlook.com");
-            user.setPassword(new BCryptPasswordEncoder().encode("123"));
+            user.setEmail("abcadmin24@gmail.com");
+            user.setPassword(new BCryptPasswordEncoder().encode("24@Ad#abc"));
             user.setUserRole(UserRole.ADMIN);
             userRepository.save(user);
         }
@@ -37,8 +37,8 @@ public class AuthServiceImplementation implements AuthService{
         if(staffAccount == null){
             User user = new User();
             user.setName("Staff");
-            user.setEmail("stf");
-            user.setPassword(new BCryptPasswordEncoder().encode("123"));
+            user.setEmail("abcstaff24@gmail.com");
+            user.setPassword(new BCryptPasswordEncoder().encode("25#St@abc"));
             user.setUserRole(UserRole.STAFF);
             userRepository.save(user);
         }

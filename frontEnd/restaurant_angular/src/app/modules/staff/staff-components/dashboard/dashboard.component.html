@@ -1,14 +1,14 @@
-<form nz-form [formGroup]="validateForm" style="margin-top: 20px; text-align:center;">
-    <input nz-input placeholder="Enter Keyword to search" nzSize="large" style="width: 20%;" formControlName="title" />
-   <button nz-button [nzSize]="size" nzType="primary" style="margin-left: 15px;"
+<form nz-form [formGroup]="validateForm" style="margin-top: 20px; text-align:center; background-color: #FFFF;">
+    <input nz-input placeholder="Enter Keyword to search" nzSize="large" style="width: 20%; padding: 10px; border: 1.5px solid #5d5d5d; border-radius: 5px;" formControlName="title" />
+   <button nz-button [nzSize]="size" nzType="primary" style="margin-left: 15px;border: 1.5px solid #4078fa; border-radius: 5px;"
    [disabled]="validateForm.invalid" (click)="searchCategory()" [disabled]="validateForm.invalid">Search</button>
 </form>
 
-<div style="background-color: #F8F8F8; min-height: 91vh;">
+<div style="background-color: #FFFF; min-height: 91vh;">
 
     <div style="padding-top: 10px;"></div>
    
-     <div style="margin-top:10px;" class="child" *ngFor="let category of categories">
+     <div style="background-color: #ffffff; margin-top:10px;" class="child" *ngFor="let category of categories">
         <div nz-row>
             <div nz-col nzSpan="8">
                 <img class="profile" style="height: 130px; width: 200px; border-radius: 10px;" [src]="category.processedImg" alt="profile" />
