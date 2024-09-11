@@ -1,5 +1,3 @@
----
-
 # **ABC Restaurant Online Reservation System**
 
 ## **Table of Contents**
@@ -95,7 +93,7 @@ The system uses JWT-based authentication with role-based access control. Ensure 
    - Clone the project from GitHub or download the ZIP file.
    
 2. **Back-End Setup:**
-   - Open the `abc-restaurant` last folder in your IDE.
+   - Open the `abc-restaurant` folder in your IDE.
    - Create a MySQL database named `abcres_db` or modify the schema name in the application properties.
 
 3. **Run the Spring Boot Application:**
@@ -104,18 +102,14 @@ The system uses JWT-based authentication with role-based access control. Ensure 
 
 4. **Front-End Setup:**
    - Open the `restaurant_angular` folder in VS Code.
-   - Run the following command to serve the application:  
+   - If you encounter the error `"Try installing with 'npm install'"`, run the command:  
      ```bash
-     ng serve
+     npm install
      ```
-      - If you encounter the error `"Try installing with 'npm install'"`, run the command:  
-        ```bash
-        npm install
-        ```
-      - If another error appears like `"To address all issues, run: 'npm audit fix'"`, run:  
-        ```bash
-        npm audit fix
-        ```
+   - If another error appears like `"To address all issues, run: 'npm audit fix'"`, run:  
+     ```bash
+     npm audit fix
+     ```
 
 5. **Serve the Front End:**
    - Run the following command to serve the application:  
@@ -127,7 +121,7 @@ The system uses JWT-based authentication with role-based access control. Ensure 
 ---
 
 ### **GitHub Repository**
-- **Repository Link:** [ABC Restaurant GitHub Repository](https://github.com/sachi254/ABC_Restaurant.git)
+- **Repository Link:** [ABC Restaurant GitHub Repository](https://github.com/sachi254/)
 
 ---
 
